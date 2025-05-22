@@ -22,7 +22,7 @@ const MyComplaints = () => {
     try {
       const token = await AsyncStorage.getItem("token");
 
-      // Gửi phản ánh qua API
+
       const response = await authApis(token).post("/feedbacks/", {
         resident_id: residentId,
         description: description,
@@ -30,7 +30,7 @@ const MyComplaints = () => {
 
       if (response.status === 201) {
         Alert.alert("Thành công", "Phản ánh đã được gửi thành công.");
-        setDescription(""); // Reset description
+        setDescription("");
       } else {
         Alert.alert("Lỗi", "Đã xảy ra lỗi khi gửi phản ánh. Vui lòng thử lại.");
       }
