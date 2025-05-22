@@ -4,14 +4,14 @@ import { MyUserContext } from "../../configs/Contexts";
 import { authApis } from "../../configs/Apis";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SendFeedback = () => {
+const MyComplaints = () => {
   const user = useContext(MyUserContext);
   const residentId = user.resident?.id;
 
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSendFeedback = async () => {
+  const handleMyComplaints = async () => {
     if (!description.trim()) {
       Alert.alert("Lỗi", "Vui lòng nhập nội dung phản ánh.");
       return;
@@ -58,7 +58,7 @@ const SendFeedback = () => {
       {loading ? (
         <ActivityIndicator size="large" color="#007bff" style={styles.loader} />
       ) : (
-        <TouchableOpacity style={styles.button} onPress={handleSendFeedback}>
+        <TouchableOpacity style={styles.button} onPress={handleMyComplaints}>
           <Text style={styles.buttonText}>Gửi Phản Ánh</Text>
         </TouchableOpacity>
       )}
@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SendFeedback;
+export default MyComplaints;
