@@ -10,6 +10,11 @@ export const endpoints = {
     'residents': '/residents/',
     'invoices': '/invoices/',
     'lockers': '/lockeritem/',
+    'lockeritems': '/lockeritems/',
+    'complaints': '/complaints/',
+    'surveys': '/surveys/',
+    'visitors': '/visitors/',
+    'parking_cards': '/parkingcards/',
 };
 
 export const authApis = (token) => {

@@ -24,12 +24,12 @@ const ResidentDetails = ({ route }) => {
       const res = await authApis(token).get(`${endpoints["residents"]}${residentId}/`);
       setResident(res.data);
       
-      const userRes = await authApis(token).get(`${endpoints["users"]}`);
-      const user = userRes.data.find(u => u.resident && u.resident.id === residentId);
+    //   const userRes = await authApis(token).get(`${endpoints["users"]}`);
+    //   const user = userRes.data.find(u => u.resident && u.resident.id === residentId);
 
-      if (user) {
-        setAccount(user);
-      }
+    //   if (user) {
+    //     setAccount(user);
+    //   }
 
     } catch (err) {
       console.error("Lỗi khi tải thông tin cư dân:", err);
@@ -72,7 +72,7 @@ const ResidentDetails = ({ route }) => {
         </Card.Content>
       </Card>
 
-      {account && (
+      {/* {account && (
         <Card style={styles.card}>
           <Card.Title title="Tài khoản người dùng" />
           <Card.Content>
@@ -81,7 +81,7 @@ const ResidentDetails = ({ route }) => {
             <Text>🛡️ Vai trò: {"Người dùng thường"}</Text>
           </Card.Content>
         </Card>
-      )}
+      )} */}
     </ScrollView>
   );
 };

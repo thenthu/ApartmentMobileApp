@@ -55,7 +55,7 @@ const Login = () => {
       try {
         setLoading(true);
         
-        let res = await Apis.post(endpoints['login'], {
+        let res = await Apis.post(endpoints.login, {
                     ...user, 
                     client_id: '5eqLWUoLXszkZZLQwXKYBV4BMz5PKGNv1XkTiTFs',
                     client_secret: '8dIvAcj71Ow4sTQyC206D0oeiObn51SyoOAkIgtliySTheMkOPWtap5Y6FvJeGBdhhZ2UU7nidRYCoDRvspHV0BXi2753M5YV4HNrrhJIurc52UmiIjdyV7bKsUGcgMj',
@@ -64,11 +64,17 @@ const Login = () => {
 
         await AsyncStorage.setItem('token', res.data.access_token);
 
-        let u = await authApis(res.data.access_token).get(endpoints['current_user']);
+        let u = await authApis(res.data.access_token).get(endpoints.current_user);
         dispatch({
           type: 'login',
           payload: u.data,
         });
+
+        if (u.data.avatar === "" && u.data.username != 'admin' ) {
+          setTimeout(() => {
+            nav.navigate('index', { screen: 'ChangePasswordAndAvatar' });
+          }, 100);
+        }
 
       } catch (ex) {
         if (ex.response) {

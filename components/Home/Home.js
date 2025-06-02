@@ -6,18 +6,21 @@ import Apis, { endpoints } from "../../configs/Apis";
 
 const Home = ({ navigation }) => {
   const user = useContext(MyUserContext);
-  const [buildingInfo, setBuildingInfo] = useState({ totalRooms: 0, totalResidents: 0 });
 
   const residentMenu = [
     { title: "Thanh toán phí", icon: "card", screen: "MyInvoices" },
     { title: "Tủ đồ của tôi", icon: "cube", screen: "MyLockers" },
-    { title: "Gửi phản ánh", icon: "alert-circle", screen: "SendFeedback" },
-    { title: "Tham gia khảo sát", icon: "stats-chart", screen: "DoSurvey" },
+    { title: "Gửi phản ánh", icon: "alert-circle", screen: "MyComplaints" },
+    { title: "Tham gia khảo sát", icon: "stats-chart", screen: "MySurveys" },
+    { title: "Đăng ký khách", icon: "person-add", screen: "MyVisitors" },
+    { title: "Lịch sử hóa đơn", icon: "document-text", screen: "InvoiceHistory" },
   ];
 
   const adminMenu = [
-    { title: "Quản lý cư dân", icon: "people", screen: "Residents" },
-    { title: "Hóa đơn & thanh toán", icon: "file-tray", screen: "Payments" },
+    { title: "Quản lý cư dân", icon: "people", screen: "SubMenu" },
+    { title: "Quản lý tài khoản", icon: "person-add", screen: "Accounts" },
+    { title: "Quản lý hóa đơn", icon: "file-tray", screen: "Payments" },
+    { title: "Quản lý tủ đồ", icon: "cube", screen: "Lockers" },
     { title: "Phản ánh", icon: "alert-circle", screen: "Complaints" },
     { title: "Khảo sát cư dân", icon: "stats-chart", screen: "Surveys" },
   ];
@@ -48,7 +51,7 @@ const Home = ({ navigation }) => {
 
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.topSection}>
         <View style={styles.greetingContainer}>
           <Text style={styles.welcome}>XIN CHÀO</Text>
@@ -84,16 +87,15 @@ const styles = StyleSheet.create({
   },
   topSection: {
     flex: 2,
-    height: 200,
+    height: 230,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
     backgroundColor: '#4a90e2',
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
   },
   bottomSection: {
-    flex: 8,
+    flex: 1,
     padding: 20,
   },
   greetingContainer: {

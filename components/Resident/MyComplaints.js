@@ -21,8 +21,6 @@ const MyComplaints = () => {
 
     try {
       const token = await AsyncStorage.getItem("token");
-
-
       const response = await authApis(token).post("/feedbacks/", {
         resident_id: residentId,
         description: description,
@@ -45,7 +43,7 @@ const MyComplaints = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Gửi Phản Ánh</Text>
-      
+
       <TextInput
         style={styles.input}
         multiline
